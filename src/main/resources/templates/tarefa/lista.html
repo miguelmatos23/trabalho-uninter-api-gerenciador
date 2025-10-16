@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Agendamento de Consultas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../../css/style.css" />
+</head>
+
+<body>
+
+	<h1>Consultas Agendadas</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Paciente</th>
+				<th>Data da Consulta</th>
+				<th>Médico</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "tarefa : ${tarefas}" >
+				<td th:text="${tarefa.id}">1</td>
+				<td th:text="${tarefa.nomePaciente}">Andreia</td>
+				<td th:text="${#dates.format(tarefa.dataConsulta, 'dd/MM/yyyy')}">15/11/2025</td>
+				<td th:text="${tarefa.nomeMedico}">Miguel</td>
+				<td colspan="2"><a class="btn btn-info btn-sm" th:href="@{/tarefas/editar/{id} (id=${tarefa.id})}" role="button">
+						<span class="oi oi-brush" title="Editar" aria-hidden="true">Editar</span>
+				</a> <a class="btn btn-info btn-sm" th:href="@{/tarefas/excluir/{id} (id=${tarefa.id})}"	 role="button">
+						<span class="oi oi-brush" title="Excluir" aria-hidden="true">Excluir</span>
+				</a></td>
+
+			</tr>
+
+		</tbody>
+	</table>
+
+	<p>
+		<a href="../">Return to home</a>
+	</p>
+	
+	<div >&copy; 2025 modelo estático</div>
+
+</body>
+
+</html>
